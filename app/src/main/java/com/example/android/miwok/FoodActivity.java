@@ -16,7 +16,7 @@ public class FoodActivity extends AppCompatActivity {
         ArrayList<Word> words = new ArrayList<Word>();
 
 
-        WordAdapter itemAdapter = new WordAdapter(this, words);
+        WordAdapter itemAdapter = new WordAdapter(this, words, R.color.category_food);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemAdapter);
     }
