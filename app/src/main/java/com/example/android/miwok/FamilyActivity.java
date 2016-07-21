@@ -43,12 +43,15 @@ public class FamilyActivity extends AppCompatActivity {
         public void onAudioFocusChange(int focusChange) {
             switch (focusChange) {
                 case AudioManager.AUDIOFOCUS_GAIN:
-                    mediaPlayer.start();
+                    if (mediaPlayer != null)
+                        mediaPlayer.start();
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-                    mediaPlayer.pause();
-                    mediaPlayer.seekTo(0);
+                    if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                        mediaPlayer.pause();
+                        mediaPlayer.seekTo(0);
+                    }
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS:
                     releaseMediaPlayer();
